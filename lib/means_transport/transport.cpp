@@ -17,3 +17,7 @@ Transport::TypeSym Transport::GetType() {
 std::string Transport::GetName() {
     return name;
 }
+
+double Transport::GetTime() {
+    return 0;
+}

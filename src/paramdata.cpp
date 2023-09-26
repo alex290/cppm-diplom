@@ -6,6 +6,8 @@ ParamData::ParamData()
     distance_sim = 0;
     sizeTransport = 0;
 
+    transport = nullptr;
+
     SetType();
     SetDistance();
 }
@@ -57,7 +59,8 @@ void ParamData::Register(bool mess)
                 {
                     std::cout << ", ";
                 }
-                std::cout << transport[i]->GetName();
+                std::cout << GetTime(transport[i]);
+                int yyy = 0;
             }
 
             std::cout << std::endl;
@@ -74,7 +77,7 @@ void ParamData::Register(bool mess)
             }
             else if (ValidateRegister(static_cast<ParamData::NameTransport>(numb)))
             {
-                AddRgister(static_cast<ParamData::NameTransport>(numb));
+                PushArray(transport, sizeTransport, static_cast<ParamData::NameTransport>(numb));
             }
             else
             {
@@ -88,7 +91,8 @@ void ParamData::Register(bool mess)
     }
 }
 
-size_t ParamData::GetSize() {
+size_t ParamData::GetSize()
+{
     return sizeTransport;
 }
 
@@ -119,72 +123,6 @@ void ParamData::SetDistance()
             std::cout << "Неверное значение\n";
         }
     }
-}
-
-void ParamData::AddRgister(ParamData::NameTransport name)
-{
-    Transport **oldTr = new Transport *[sizeTransport + 1];
-    if (sizeTransport > 0)
-    {
-        for (size_t i = 0; i < sizeTransport; i++)
-        {
-            oldTr[i] = new Transport(*transport[i]);
-        }
-    }
-
-    switch (name)
-    {
-    case VEHICLE_BOOTS:
-    {
-        oldTr[sizeTransport] = new VehicleBoots();
-        break;
-    }
-    case BROOM:
-    {
-        oldTr[sizeTransport] = new Broom();
-        break;
-    }
-    case CAMEL:
-    {
-
-        oldTr[sizeTransport] = new Camel();
-        break;
-    }
-    case CENTAUR:
-    {
-        oldTr[sizeTransport] = new Centaur();
-        break;
-    }
-    case EAGLE:
-    {
-        oldTr[sizeTransport] = new Eagle();
-        break;
-    }
-    case CAMEL_FAST:
-    {
-        oldTr[sizeTransport] = new CamelFast();
-        break;
-    }
-    case MAGIC_CARPET:
-    {
-        oldTr[sizeTransport] = new MagicCarpet();
-        break;
-    }
-    default:
-        break;
-    }
-
-    DelTransp(); // Очищаем массив
-    sizeTransport++;
-
-    transport = new Transport *[sizeTransport];
-    for (size_t i = 0; i < sizeTransport; i++)
-    {
-        transport[i] = new Transport(*oldTr[i]);
-        delete oldTr[i];
-    }
-
-    delete[] oldTr;
 }
 
 bool ParamData::ValidateRegister(ParamData::NameTransport name)
@@ -256,53 +194,9 @@ bool ParamData::OneTransport(ParamData::NameTransport name)
 {
     if (sizeTransport > 0)
     {
-        Transport tr;
-
-        switch (name)
-        {
-        case VEHICLE_BOOTS:
-        {
-            tr = VehicleBoots();
-            break;
-        }
-        case BROOM:
-        {
-            tr = Broom();
-            break;
-        }
-        case CAMEL:
-        {
-
-            tr = Camel();
-            break;
-        }
-        case CENTAUR:
-        {
-            tr = Centaur();
-            break;
-        }
-        case EAGLE:
-        {
-            tr = Eagle();
-            break;
-        }
-        case CAMEL_FAST:
-        {
-            tr = CamelFast();
-            break;
-        }
-        case MAGIC_CARPET:
-        {
-            tr = MagicCarpet();
-            break;
-        }
-        default:
-            break;
-        }
-
         for (size_t i = 0; i < sizeTransport; i++)
         {
-            if (tr.GetName() == transport[i]->GetName())
+            if (transport[i] == name)
             {
                 return true;
             }
@@ -313,12 +207,122 @@ bool ParamData::OneTransport(ParamData::NameTransport name)
 
 void ParamData::DelTransp()
 {
-    if (sizeTransport > 0)
+    delete[] transport;
+}
+
+Transport *ParamData::GetTransport(ParamData::NameTransport name)
+{
+    switch (name)
     {
-        for (size_t i = 0; i < sizeTransport; i++)
-        {
-            delete transport[i];
-        }
-        delete[] transport;
+    case VEHICLE_BOOTS:
+    {
+        VehicleBoots tr;
+        Transport *par_child = &tr;
+        par_child->GetTime();
+        return par_child;
     }
+    case BROOM:
+    {
+        Broom tr;
+        Transport *par_child = &tr;
+        return par_child;
+    }
+    case CAMEL:
+    {
+
+        Camel tr;
+        Transport *par_child = &tr;
+        return par_child;
+    }
+    case CENTAUR:
+    {
+        Centaur tr;
+        Transport *par_child = &tr;
+        return par_child;
+    }
+    case EAGLE:
+    {
+        Eagle tr;
+        Transport *par_child = &tr;
+        return par_child;
+    }
+    case CAMEL_FAST:
+    {
+        CamelFast tr;
+        Transport *par_child = &tr;
+        return par_child;
+    }
+    case MAGIC_CARPET:
+    {
+        MagicCarpet tr;
+        Transport *par_child = &tr;
+        return par_child;
+    }
+    default:
+        break;
+    }
+    Transport tr;
+    Transport *par_child = &tr;
+    return par_child;
+}
+
+double ParamData::GetTime(ParamData::NameTransport name) {
+    switch (name)
+    {
+    case VEHICLE_BOOTS:
+    {
+        VehicleBoots tr;
+        return tr.GetTime();
+    }
+    case BROOM:
+    {
+        Broom tr;
+        return tr.GetTime();
+    }
+    case CAMEL:
+    {
+
+        Camel tr;
+        return tr.GetTime();
+    }
+    case CENTAUR:
+    {
+        Centaur tr;
+        return tr.GetTime();
+    }
+    case EAGLE:
+    {
+        Eagle tr;
+        return tr.GetTime();
+    }
+    case CAMEL_FAST:
+    {
+        CamelFast tr;
+        return tr.GetTime();
+    }
+    case MAGIC_CARPET:
+    {
+        MagicCarpet tr;
+        return tr.GetTime();
+    }
+    default:
+        break;
+    }
+    return 0;
+}
+
+void ParamData::PushArray(ParamData::NameTransport *&transp, size_t &size, ParamData::NameTransport value)
+{
+    ParamData::NameTransport *oldTr = new ParamData::NameTransport[sizeTransport + 1];
+    if (size > 0)
+    {
+        for (size_t i = 0; i < size; i++)
+        {
+            oldTr[i] = transp[i];
+        }
+    }
+    oldTr[size] = value;
+    delete[] transp;
+    transp = oldTr;
+    size++;
 }

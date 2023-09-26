@@ -8,6 +8,9 @@ public:
     GrountTransport();
     virtual ~GrountTransport();
 
-private:
+protected:
+    double TimeDoSleep{};  // Время движения до отдыха
+    double TimeSleep[3]{}; // Длительность отдыха
 
+    virtual double DistanceCoefficient(); // Коэффициент сокращения расстояния
 };

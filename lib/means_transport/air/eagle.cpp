@@ -3,6 +3,7 @@
 Eagle::Eagle()
 {
     name = "Орёл";
+    speed = 8;
 }
 
 Eagle::~Eagle()

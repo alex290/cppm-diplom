@@ -9,3 +9,8 @@ GrountTransport::~GrountTransport()
 {
 
 }
+
+// Коэффициент сокращения расстояния
+double GrountTransport::DistanceCoefficient() {
+    return 0;
+}

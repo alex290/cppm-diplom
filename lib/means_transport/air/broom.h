@@ -8,6 +8,8 @@ public:
     Broom();
     virtual ~Broom();
 
+    double GetTime() override;
+
 private:
 
 };

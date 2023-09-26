@@ -18,7 +18,11 @@ public:
     virtual Transport::TypeSym GetType();
     virtual std::string GetName();
 
+    virtual double GetTime();
+
 protected:
     Transport::TypeSym type; // Тип ТС
     std::string name;
+
+    int speed{}; // Скорость
 };

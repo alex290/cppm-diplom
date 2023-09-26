@@ -8,6 +8,6 @@ public:
     AirTransport();
     virtual ~AirTransport();
 
-private:
-
+protected:
+    
 };

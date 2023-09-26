@@ -38,16 +38,20 @@ private:
     int type_sim;     // тип гонки
     int distance_sim; // Дистанция гонки
 
-    Transport **transport;
+    ParamData::NameTransport*transport;
     size_t sizeTransport;
 
     void SetType();     // выбор типа гонки
     void SetDistance(); // выбор Дистанция гонки
 
-    void AddRgister(ParamData::NameTransport name); // Регистрация транспорта
-
     bool ValidateRegister(ParamData::NameTransport name); // Проверка на правильность регистрации
     bool OneTransport(ParamData::NameTransport name); // Проверка на наличие одинаковых зарегистрированных
 
     void DelTransp();
+
+    Transport *GetTransport(ParamData::NameTransport name);
+
+    double GetTime(ParamData::NameTransport name);
+
+    void PushArray(ParamData::NameTransport* &transp, size_t &size, ParamData::NameTransport value);
 };
