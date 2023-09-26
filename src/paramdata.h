@@ -33,19 +33,22 @@ public:
     void Register(bool mess = true); // Регистрация ТС
 
     size_t GetSize(); // Количество TC
+    void Result(); // Результаты гонки
 
 private:
     int type_sim;     // тип гонки
     int distance_sim; // Дистанция гонки
 
-    ParamData::NameTransport*transport;
+    ParamData::NameTransport *transport;
     size_t sizeTransport;
+
+    
 
     void SetType();     // выбор типа гонки
     void SetDistance(); // выбор Дистанция гонки
 
     bool ValidateRegister(ParamData::NameTransport name); // Проверка на правильность регистрации
-    bool OneTransport(ParamData::NameTransport name); // Проверка на наличие одинаковых зарегистрированных
+    bool OneTransport(ParamData::NameTransport name);     // Проверка на наличие одинаковых зарегистрированных
 
     void DelTransp();
 
@@ -53,5 +56,5 @@ private:
 
     double GetTime(ParamData::NameTransport name);
 
-    void PushArray(ParamData::NameTransport* &transp, size_t &size, ParamData::NameTransport value);
+    void PushArray(ParamData::NameTransport *&transp, size_t &size, ParamData::NameTransport value);
 };

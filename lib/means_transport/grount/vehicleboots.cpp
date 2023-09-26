@@ -1,6 +1,6 @@
 #include "vehicleboots.h"
 
-VehicleBoots::VehicleBoots()
+VehicleBoots::VehicleBoots(size_t dist) : GrountTransport(dist)
 {
     name = "Ботинки-вездеходы";
     speed = 6;

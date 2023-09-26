@@ -30,10 +30,12 @@ int main(int, char **)
                     param.Register();
                 }
             }
+
+            param.Result();
             numb = 0;
             while (!(numb == 2 || numb == 1))
             {
-                std::cout << "\n1. Провести ещё одну гонку\n2.  Выйти\nВыберите деиствие: ";
+                std::cout << "\n1. Провести ещё одну гонку\n2. Выйти\nВыберите деиствие: ";
                 std::cin >> numb;
                 if (numb == 2)
                 {

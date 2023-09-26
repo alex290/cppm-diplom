@@ -5,7 +5,7 @@
 class Centaur : public GrountTransport
 {
 public:
-    Centaur();
+    Centaur(size_t dist);
     virtual ~Centaur();
 
 private:

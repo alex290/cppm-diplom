@@ -12,7 +12,7 @@ public:
         AIR,        // Воздушный тип
     };
 
-    Transport();
+    Transport(size_t dist);
     virtual ~Transport();
 
     virtual Transport::TypeSym GetType();
@@ -21,8 +21,11 @@ public:
     virtual double GetTime();
 
 protected:
+    size_t dist_;
     Transport::TypeSym type; // Тип ТС
     std::string name;
+
+    double timeEnd{}; // Время гонки
 
     int speed{}; // Скорость
 };

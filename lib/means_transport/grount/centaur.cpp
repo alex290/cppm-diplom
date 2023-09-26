@@ -1,6 +1,6 @@
 #include "centaur.h"
 
-Centaur::Centaur()
+Centaur::Centaur(size_t dist) : GrountTransport(dist)
 {
     name = "Кентавр";
     speed = 15;

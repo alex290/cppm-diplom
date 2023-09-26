@@ -1,6 +1,6 @@
 #include "camel.h"
 
-Camel::Camel()
+Camel::Camel(size_t dist) : GrountTransport(dist)
 {
     name = "Верблюд";
     speed = 10;
@@ -13,3 +13,4 @@ Camel::~Camel()
 {
 
 }
+

@@ -5,7 +5,7 @@
 class CamelFast : public Camel
 {
 public:
-    CamelFast();
+    CamelFast(size_t dist);
     virtual ~CamelFast();
 
 private:

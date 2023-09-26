@@ -5,7 +5,7 @@
 class VehicleBoots : public GrountTransport
 {
 public:
-    VehicleBoots();
+    VehicleBoots(size_t dist);
     virtual ~VehicleBoots();
 
 private:

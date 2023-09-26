@@ -1,6 +1,6 @@
 #include "camelfast.h"
 
-CamelFast::CamelFast()
+CamelFast::CamelFast(size_t dist) : Camel(dist)
 {
     name = "Верблюд-быстроход";
     speed = 40;
@@ -14,3 +14,4 @@ CamelFast::~CamelFast()
 {
 
 }
+

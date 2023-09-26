@@ -5,7 +5,7 @@
 class Camel : public GrountTransport
 {
 public:
-    Camel();
+    Camel(size_t dist);
     virtual ~Camel();
 
 private:

@@ -1,6 +1,6 @@
 #include "transport.h"
 
-Transport::Transport()
+Transport::Transport(size_t dist) : dist_(dist)
 {
     type = GROUND;
 }
@@ -19,5 +19,5 @@ std::string Transport::GetName() {
 }
 
 double Transport::GetTime() {
-    return 0;
+    return timeEnd;
 }

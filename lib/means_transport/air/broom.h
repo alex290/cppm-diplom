@@ -5,10 +5,8 @@
 class Broom : public AirTransport
 {
 public:
-    Broom();
+    Broom(size_t dist);
     virtual ~Broom();
-
-    double GetTime() override;
 
 private:
 

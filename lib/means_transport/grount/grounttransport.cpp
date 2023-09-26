@@ -1,6 +1,6 @@
 #include "grounttransport.h"
 
-GrountTransport::GrountTransport()
+GrountTransport::GrountTransport(size_t dist) : Transport(dist)
 {
     type = Transport::GROUND;
 }
@@ -10,7 +10,3 @@ GrountTransport::~GrountTransport()
 
 }
 
-// Коэффициент сокращения расстояния
-double GrountTransport::DistanceCoefficient() {
-    return 0;
-}

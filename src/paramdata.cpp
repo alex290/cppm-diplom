@@ -59,8 +59,7 @@ void ParamData::Register(bool mess)
                 {
                     std::cout << ", ";
                 }
-                std::cout << GetTime(transport[i]);
-                int yyy = 0;
+                std::cout << GetTransport(transport[i])->GetName();
             }
 
             std::cout << std::endl;
@@ -94,6 +93,19 @@ void ParamData::Register(bool mess)
 size_t ParamData::GetSize()
 {
     return sizeTransport;
+}
+
+void ParamData::Result()
+{
+    std::cout << "\nРезультаты гонки\n";
+    if (sizeTransport > 0)
+    {
+        for (size_t i = 0; i < sizeTransport; i++)
+        {
+            std::cout << (i + 1) << ". " << GetTransport(transport[i])->GetName() << ". Время: " << GetTime(transport[i]) << std::endl;
+        }
+    }
+    std::cout << std::endl;
 }
 
 void ParamData::SetType()
@@ -216,93 +228,94 @@ Transport *ParamData::GetTransport(ParamData::NameTransport name)
     {
     case VEHICLE_BOOTS:
     {
-        VehicleBoots tr;
+        VehicleBoots tr(distance_sim);
         Transport *par_child = &tr;
         par_child->GetTime();
         return par_child;
     }
     case BROOM:
     {
-        Broom tr;
+        Broom tr(distance_sim);
         Transport *par_child = &tr;
         return par_child;
     }
     case CAMEL:
     {
 
-        Camel tr;
+        Camel tr(distance_sim);
         Transport *par_child = &tr;
         return par_child;
     }
     case CENTAUR:
     {
-        Centaur tr;
+        Centaur tr(distance_sim);
         Transport *par_child = &tr;
         return par_child;
     }
     case EAGLE:
     {
-        Eagle tr;
+        Eagle tr(distance_sim);
         Transport *par_child = &tr;
         return par_child;
     }
     case CAMEL_FAST:
     {
-        CamelFast tr;
+        CamelFast tr(distance_sim);
         Transport *par_child = &tr;
         return par_child;
     }
     case MAGIC_CARPET:
     {
-        MagicCarpet tr;
+        MagicCarpet tr(distance_sim);
         Transport *par_child = &tr;
         return par_child;
     }
     default:
         break;
     }
-    Transport tr;
+    Transport tr(distance_sim);
     Transport *par_child = &tr;
     return par_child;
 }
 
-double ParamData::GetTime(ParamData::NameTransport name) {
+double ParamData::GetTime(ParamData::NameTransport name)
+{
     switch (name)
     {
     case VEHICLE_BOOTS:
     {
-        VehicleBoots tr;
+        VehicleBoots tr(distance_sim);
         return tr.GetTime();
     }
     case BROOM:
     {
-        Broom tr;
+        Broom tr(distance_sim);
         return tr.GetTime();
     }
     case CAMEL:
     {
 
-        Camel tr;
+        Camel tr(distance_sim);
         return tr.GetTime();
     }
     case CENTAUR:
     {
-        Centaur tr;
+        Centaur tr(distance_sim);
         return tr.GetTime();
     }
     case EAGLE:
     {
-        Eagle tr;
+        Eagle tr(distance_sim);
         return tr.GetTime();
     }
     case CAMEL_FAST:
     {
-        CamelFast tr;
+        CamelFast tr(distance_sim);
         return tr.GetTime();
     }
     case MAGIC_CARPET:
     {
-        MagicCarpet tr;
+        MagicCarpet tr(distance_sim);
         return tr.GetTime();
     }
     default:

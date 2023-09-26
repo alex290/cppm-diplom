@@ -5,7 +5,7 @@
 class Eagle : public AirTransport
 {
 public:
-    Eagle();
+    Eagle(size_t dist);
     virtual ~Eagle();
 
 private:

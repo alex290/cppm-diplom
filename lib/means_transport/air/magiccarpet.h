@@ -5,7 +5,7 @@
 class MagicCarpet : public AirTransport
 {
 public:
-    MagicCarpet();
+    MagicCarpet(size_t dist);
     virtual ~MagicCarpet();
 
 private:
