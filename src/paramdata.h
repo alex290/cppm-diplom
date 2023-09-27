@@ -51,8 +51,8 @@ private:
     bool OneTransport(ParamData::NameTransport name);     // Проверка на наличие одинаковых зарегистрированных
 
     void DelTransp();
-
-    Transport *GetTransport(ParamData::NameTransport name);
+  
+    std::string GetName(ParamData::NameTransport name);
 
     double GetTime(ParamData::NameTransport name);
 

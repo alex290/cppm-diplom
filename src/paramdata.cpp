@@ -59,7 +59,7 @@ void ParamData::Register(bool mess)
                 {
                     std::cout << ", ";
                 }
-                std::cout << GetTransport(transport[i])->GetName();
+                std::cout << GetName(transport[i]);
             }
 
             std::cout << std::endl;
@@ -102,7 +102,7 @@ void ParamData::Result()
     {
         for (size_t i = 0; i < sizeTransport; i++)
         {
-            std::cout << (i + 1) << ". " << GetTransport(transport[i])->GetName() << ". Время: " << GetTime(transport[i]) << std::endl;
+            std::cout << (i + 1) << ". " << GetName(transport[i]) << ". Время: " << GetTime(transport[i]) << std::endl;
         }
     }
     std::cout << std::endl;
@@ -222,60 +222,49 @@ void ParamData::DelTransp()
     delete[] transport;
 }
 
-Transport *ParamData::GetTransport(ParamData::NameTransport name)
-{
+std::string ParamData::GetName(ParamData::NameTransport name) {
     switch (name)
     {
     case VEHICLE_BOOTS:
     {
         VehicleBoots tr(distance_sim);
-        Transport *par_child = &tr;
-        par_child->GetTime();
-        return par_child;
+        return tr.GetName();
     }
     case BROOM:
     {
         Broom tr(distance_sim);
-        Transport *par_child = &tr;
-        return par_child;
+        return tr.GetName();
     }
     case CAMEL:
     {
 
         Camel tr(distance_sim);
-        Transport *par_child = &tr;
-        return par_child;
+        return tr.GetName();
     }
     case CENTAUR:
     {
         Centaur tr(distance_sim);
-        Transport *par_child = &tr;
-        return par_child;
+        return tr.GetName();
     }
     case EAGLE:
     {
         Eagle tr(distance_sim);
-        Transport *par_child = &tr;
-        return par_child;
+        return tr.GetName();
     }
     case CAMEL_FAST:
     {
         CamelFast tr(distance_sim);
-        Transport *par_child = &tr;
-        return par_child;
+        return tr.GetName();
     }
     case MAGIC_CARPET:
     {
         MagicCarpet tr(distance_sim);
-        Transport *par_child = &tr;
-        return par_child;
+        return tr.GetName();
     }
     default:
         break;
     }
-    Transport tr(distance_sim);
-    Transport *par_child = &tr;
-    return par_child;
+    return "";
 }
 
 double ParamData::GetTime(ParamData::NameTransport name)
