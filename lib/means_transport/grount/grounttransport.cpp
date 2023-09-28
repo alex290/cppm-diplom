@@ -19,7 +19,14 @@ double GrountTransport::GetTime()
     // Так как время движения до отдыха равно 6 часов, то по пути ТС нужно будет отдохнуть 1 раз.
     // Итоговое время составит: 10 + 3 = 13 ч.
 
-    size_t count = static_cast<size_t>(timeLoc / TimeDoSleep);
+    double interval =speed * TimeDoSleep;
+    double countOst = dist_ / interval;
+    size_t count = static_cast<size_t>(countOst);
+    if (countOst == count)
+    {
+        count--;
+    }
+    
     double addTime = 0;
     if (count > 1 && TimeSleep[0] > 0)
     {
@@ -33,11 +40,12 @@ double GrountTransport::GetTime()
     }
     if (count > 1 && TimeSleep[2] > 0)
     {
-        count--;
+        
         for (size_t i = 0; i < count; i++)
         {
-            addTime += TimeSleep[1];
+            addTime += TimeSleep[2];
         }
+        count--;
     }
     timeLoc += addTime;
 
