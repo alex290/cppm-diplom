@@ -22,6 +22,8 @@ double GrountTransport::GetTime()
     double interval =speed * TimeDoSleep;
     double countOst = dist_ / interval;
     size_t count = static_cast<size_t>(countOst);
+
+    // Если последняя остановка на конце пути уменшаем счетчик
     if (countOst == count)
     {
         count--;
