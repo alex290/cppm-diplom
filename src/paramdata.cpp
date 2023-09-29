@@ -334,8 +334,6 @@ void ParamData::PushArray(ParamData::NameTransport *&transp, size_t &size, Param
 
 void ParamData::SortArray(ParamData::NameTransport *&arr)
 {
-    // ParamData::NameTransport *arr = new ParamData::NameTransport[sizeTransport];
-
     for (int i = 0; i < sizeTransport - 1; i++)
     {
         for (int j = 0; j < sizeTransport - i - 1; j++)
@@ -349,6 +347,4 @@ void ParamData::SortArray(ParamData::NameTransport *&arr)
             }
         }
     }
-    // delete[] transp;
-    // transp = arr;
 }
