@@ -57,4 +57,6 @@ private:
     double GetTime(ParamData::NameTransport name);
 
     void PushArray(ParamData::NameTransport *&transp, size_t &size, ParamData::NameTransport value);
+
+    void SortArray(ParamData::NameTransport* &arr); // Сортровка массива по скорости
 };

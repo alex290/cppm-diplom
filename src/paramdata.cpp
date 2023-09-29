@@ -98,6 +98,8 @@ size_t ParamData::GetSize()
 void ParamData::Result()
 {
     std::cout << "\nРезультаты гонки\n";
+    SortArray(transport);
+    
     if (sizeTransport > 0)
     {
         for (size_t i = 0; i < sizeTransport; i++)
@@ -222,7 +224,8 @@ void ParamData::DelTransp()
     delete[] transport;
 }
 
-std::string ParamData::GetName(ParamData::NameTransport name) {
+std::string ParamData::GetName(ParamData::NameTransport name)
+{
     switch (name)
     {
     case VEHICLE_BOOTS:
@@ -327,4 +330,25 @@ void ParamData::PushArray(ParamData::NameTransport *&transp, size_t &size, Param
     delete[] transp;
     transp = oldTr;
     size++;
+}
+
+void ParamData::SortArray(ParamData::NameTransport *&arr)
+{
+    // ParamData::NameTransport *arr = new ParamData::NameTransport[sizeTransport];
+
+    for (int i = 0; i < sizeTransport - 1; i++)
+    {
+        for (int j = 0; j < sizeTransport - i - 1; j++)
+        {
+            if (GetTime(arr[j]) < GetTime(arr[j + 1])) 
+            {
+                // меняем элементы местами
+                ParamData::NameTransport temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    // delete[] transp;
+    // transp = arr;
 }
