@@ -99,7 +99,7 @@ void ParamData::Result()
 {
     std::cout << "\nРезультаты гонки\n";
     SortArray(transport);
-    
+
     if (sizeTransport > 0)
     {
         for (size_t i = 0; i < sizeTransport; i++)
@@ -340,7 +340,7 @@ void ParamData::SortArray(ParamData::NameTransport *&arr)
     {
         for (int j = 0; j < sizeTransport - i - 1; j++)
         {
-            if (GetTime(arr[j]) < GetTime(arr[j + 1])) 
+            if (GetTime(arr[j]) > GetTime(arr[j + 1])) 
             {
                 // меняем элементы местами
                 ParamData::NameTransport temp = arr[j];
